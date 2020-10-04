@@ -42,7 +42,7 @@ const Header = (props) => {
                             <NavLink href="/about">About</NavLink>
                         </NavItem>
                        <NavItem >
-                            <UncontrolledDropdown nav inNavbar >
+                            <UncontrolledDropdown inNavbar >
                                 <DropdownToggle nav caret>
                                     Login
                                 </DropdownToggle>

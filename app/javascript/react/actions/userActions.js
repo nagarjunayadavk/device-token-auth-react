@@ -73,19 +73,6 @@ function login(signinRequest) {
         dispatch(failure(error));
         dispatch(alertActions.error(error));
       });
-
-
-    // userService.login(email, password)
-    //   .then(
-    //     user => {
-    //       dispatch(success(user));
-    //       history.push('/');
-    //     },
-    //     error => {
-    //       dispatch(failure(error));
-    //       dispatch(alertActions.error(error));
-    //     }
-    //   );
   };
 
 
@@ -113,13 +100,41 @@ function failure(error) {
 }
 
 function logout() {
-  // remove user from local storage to log user out
-  localStorage.removeItem(ACCESS_TOKEN);
-  localStorage.removeItem(CLIENT);
-  localStorage.removeItem(UID);
-  localStorage.removeItem(EXPIRY);
 
-  return { type: LOGOUT };
+
+  return dispatch => {
+
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('[name="csrf-token"]').content,
+        'access-token': localStorage.getItem(ACCESS_TOKEN),
+        'client': localStorage.getItem(CLIENT),
+        'uid': localStorage.getItem(UID),
+        'expiry': localStorage.getItem(EXPIRY),
+        'token-type': 'Bearer'
+      }
+    }
+    axios.post('/api/v1/auth/sign_out', {}, options)
+      .then(function (response) {
+        // remove user from local storage to log user out
+        localStorage.removeItem(ACCESS_TOKEN);
+        localStorage.removeItem(CLIENT);
+        localStorage.removeItem(UID);
+        localStorage.removeItem(EXPIRY);
+        history.push('/');
+        dispatch(logoutUser());
+        // that.props.changePage("delete");
+        // that.props.updateCurrentUser(email);
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+
+    function logoutUser() {
+      return { type: LOGOUT };
+    }
+  }
 }
 
 function register(user) {
@@ -131,18 +146,18 @@ function register(user) {
         'X-CSRF-TOKEN': document.querySelector('[name="csrf-token"]').content
       }
     }
-    axios.post('/api/v1/auth',  user, options)
-    .then(function (response) {
-      dispatch(success());
-      history.push('/');
-      console.log("response ", response);
-      dispatch(failure(error));
-      // that.props.changePage("delete");
-      // that.props.updateCurrentUser(email);
-    })
-    .catch(function (error) {
-      console.log(error)
-    });
+    axios.post('/api/v1/auth', user, options)
+      .then(function (response) {
+        dispatch(success());
+        history.push('/');
+        console.log("response ", response);
+        dispatch(failure(error));
+        // that.props.changePage("delete");
+        // that.props.updateCurrentUser(email);
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
 
     // userService.register(user)
     //   .then(

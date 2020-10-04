@@ -50,6 +50,8 @@ class LoginPage extends React.Component {
                 </div>
                 
                 <a href="/api/v1/auth/facebook?auth_origin_url=http://localhost:3000"> Login with Fabcebook </a> <br /><br />
+                <a href="/api/v1/auth/github?auth_origin_url=http://localhost:3000"> Login with GitHub </a> <br /><br />
+                <a href="/api/v1/auth/google?auth_origin_url=http://localhost:3000"> Login with Google </a> <br /><br />
                 {/* omniauth_window_type=newWindow */}
             </div>
         );
