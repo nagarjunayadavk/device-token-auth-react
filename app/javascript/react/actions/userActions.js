@@ -8,6 +8,8 @@ import { history } from '../utils/history'
 import { alertActions } from './alertActions';
 
 import axios from 'axios';
+import { axiosDefaultHeaders } from '../utils/helpers';
+axiosDefaultHeaders(axios);
 import { CLIENT, UID, ACCESS_TOKEN, EXPIRY } from '../constants';
 
 export const userActions = {
@@ -53,19 +55,12 @@ function login(signinRequest) {
       email
     }));
 
-    const options = {
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('[name="csrf-token"]').content
-      }
-    }
 
-    return axios.post('/api/v1/auth/sign_in', signinRequest,
-      options
-    )
+
+    return axios.post('/api/v1/auth/sign_in', signinRequest)
       .then((response) => {
         dispatch(success(response.data));
-        dispatch(fetchSigninSuccess(response.headers));
+        // dispatch(fetchSigninSuccess(response.headers));
         history.push('/dashboard');
       })
       .catch((error) => {

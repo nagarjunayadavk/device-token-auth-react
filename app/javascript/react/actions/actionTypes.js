@@ -17,3 +17,10 @@ export const INIT_CURRENT_USER = 'INIT_CURRENT_USER';
 export const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN';
 export const SET_SIGNIN_RESULT = 'SET_SIGNIN_RESULT';
 export const REHYDRATE = 'REHYDRATE';
+//==== Post ====
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POST = 'FETCH_POST';
+export const CREATE_POST = 'CREATE_POST';
+export const UPDATE_POST = 'UPDATE_POST';
+export const DELETE_POST = 'DELETE_POST';
+export const FETCH_POSTS_DATA_FAILURE = "FETCH_POSTS_DATA_FAILURE";

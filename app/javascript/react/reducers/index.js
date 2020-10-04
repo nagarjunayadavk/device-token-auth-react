@@ -5,13 +5,15 @@ import { authentication } from './authentication';
 // import { users } from './users';
 import  accessToken  from './accessToken';
 import { alert } from './alert';
+import { postStore } from './posts'
 
 const rootReducer = combineReducers({
   authentication,
   // registration,
   // users,
   alert,
-  accessToken
+  accessToken,
+  postStore
 });
 
 export default rootReducer;

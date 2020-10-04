@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { userActions } from '../actions/userActions';
 import { Link } from 'react-router-dom';
+import Posts from './posts/Posts';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class Dashboard extends Component {
                         : null
                 }
                 Dashboard page <br />
-                {/* user email: {user.data.email} <br /> */}
+                <Posts/>
             </Fragment>
         );
     }
