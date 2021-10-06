@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## device-token-auth-react
 
-Things you may want to cover:
+This is sample application based on recat UI and ROR. 
+Authentication build on using  `devise_token_auth` gem to grenerate the token for each api.
 
-* Ruby version
+This application has 3 types of `Signup/Login` using `facebook, github or norml user signup/login`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
